@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %} Homepage - My Todo App {% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Your Todo List</h2>
+    {% if messages %}
+    <ul class="message-list">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    <div class="row">
+        {% for todo in list %}
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <!-- Add a strikethrough style if the todo is marked as done -->
+                    <h5 class="card-title {% if todo.done %} text-decoration-line-through {% endif %}">{{ todo.title }}</h5>
+                    <p class="card-text text-muted {% if todo.done %} text-decoration-line-through {% endif %}">{{ todo.description }}</p>
+                    
+                    <!-- Date and Time with Right Alignment -->
+                    <p class="card-text text-end fs-8">
+                        <small><small>{{ todo.date_modified|date:"D-d-M-Y" }}</small></small>
+                    <br>
+                        <small><small>{{ todo.date_modified|time:"h:i A" }}</small></small>
+                    </p>
+
+                    <div class="d-flex justify-content-end">
+                        <!-- Link to mark the todo as done -->
+                        <a href="{% url 'done' todo.id %}" class="btn {% if not todo.done %}btn-success{% else %}btn-danger{% endif %} btn-sm me-2">
+                            {% if todo.done %} Undo {% else %} Mark as Done {% endif %}
+                        </a>
+                        <a href="{% url 'edit' todo.id %}" class="btn btn-warning btn-sm me-2">Edit</a>
+                        <a href="{% url 'delete' todo.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center col-12">No todos yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

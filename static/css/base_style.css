@@ -1,0 +1,69 @@
+/* Base layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Century Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    margin-top: auto; /* Ensures the footer stays at the bottom */
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+/* Card layout */
+.card {
+    border-radius: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Button Styling */
+.btn {
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Message Alert */
+.alert {
+    margin-top: 20px;
+}
+
+.message-list {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;  /* Optional: Removes padding if needed */
+  }
+  
+  .message-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #d4edda; /* Light green for success messages */
+    border: 1px solid #c3e6cb; /* Border to match the background color */
+    border-radius: 5px;
+  }
+  

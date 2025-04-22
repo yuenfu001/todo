@@ -1,0 +1,79 @@
+{% extends "base.html" %} 
+{% block title %} Create Todo {% endblock %} 
+{% block content %} 
+
+
+<br />
+<div class="form-container">
+  <h2>Create a New Todo</h2>
+  <form action="" method="post">
+    {% csrf_token %}
+    <label for="id_title" class="form-label">Title</label>
+    {{ edit_todo.title }}
+    <label for="id_description" class="form-label">Description</label>
+    {{ edit_todo.description }}
+    <br />
+    <button type="submit" class="submit-btn">Update</button>
+  </form>
+</div>
+
+<style>
+  .form-container {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  form p {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  form input[type="text"],
+  form input[type="textarea"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  .form-label, 
+        .form-control {
+            font-family: 'Century Gothic', 'Century Gothic';
+            font-weight: bold;
+        }
+
+        input, textarea {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-style: italic;
+        }
+</style>
+{% endblock %}
