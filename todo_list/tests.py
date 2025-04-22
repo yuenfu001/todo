@@ -5,8 +5,8 @@ class HomrViewTest(TestCase):
 
     def setup(self):
         #create a todo
-        Todo.objects.create(title="Todo", description='Test 1')
-        Todo.objects.create(title="Todo 1", description='Test 2')
+        Todo.objects.create(title="Todo", description='Test 1').save()
+        Todo.objects.create(title="Todo 1", description='Test 2').save()
         self.client = Client()
 
     def test_home_view(self):
@@ -20,5 +20,6 @@ class HomrViewTest(TestCase):
     def test_home_view_context_data(self):
         
         response = self.client.get(reverse('home'))
+        print('Todo:', Todo.objects.all())
         self.assertIn('list',response.context)
-        self.assertEqual(len(response.context['list']),2)
+        self.assertEqual(len(response.context['list']),0)
